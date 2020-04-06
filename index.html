@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <main>
+      <div class="main-animation">
+        <div class="animation-and-counters">
+          <div class="row">
+            <div class="counter" id="healthy">0 healthy</div>
+            <div class="counter" id="sick">0 sick</div>
+            <div class="counter" id="recovered">0 recovered</div>
+            <div class="counter" id="deceased">0 deceased</div>
+            <div class="counter time">
+              <span id="time-elapsed">0</span>&nbspdays
+            </div>
+          </div>
+          <div id="animation"></div>
+        </div>
+        <div class="right-side">
+          <div id="chart-container"></div>
+          <div class="control-panel-and-params-section">
+            <div class="control-panel">
+              <h2 class="heading">Covid-19 Control Panel</h2>
+              <button
+                class="toggle-animation-button start"
+                onclick="animation.toggleAnimation()"
+                id="start-or-pause"
+              >
+                Start animation
+              </button>
+              <button
+                class="toggle-animation-button reset"
+                onclick="window.location.reload()"
+                id="reset"
+              >
+                Reset to beginning
+              </button>
+              <p class="slider-description">
+                You can only adjust these values at the start!
+              </p>
+              <div class="input-section">
+                <h4>Fraction of people travelling</h4>
+                <p class="slider-description">
+                  How many people are breaking the "Shelter In Place" rules?
+                  Maximum 1.00, Minimum 0.00
+                </p>
+                <input
+                  type="range"
+                  min="0.01"
+                  max="1"
+                  step="0.01"
+                  value="0.5"
+                  onchange="onSliderChange('fractionOfPeopleTravelling')"
+                  class="slider"
+                  id="fractionOfPeopleTravelling"
+                />
+                <span id="fractionOfPeopleTravelling-value">0.5</span>
+              </div>
+              <div class="input-section">
+                <h4>Avg. number of partners per person</h4>
+                <p class="slider-description">
+                  How many partners does each person have (on average)?
+                </p>
+                <input
+                  type="range"
+                  min="0"
+                  max="5"
+                  step="1"
+                  value="2"
+                  onchange="onSliderChange('avgNumPartnersPerPerson')"
+                  class="slider"
+                  id="avgNumPartnersPerPerson"
+                />
+                <span id="avgNumPartnersPerPerson-value">2</span>
+              </div>
+              <div class="input-section">
+                <h4>Avg. number of visits per week per person</h4>
+                <p class="slider-description">
+                  How many times per week do rule breakers leave their house to
+                  see someone else?
+                </p>
+                <input
+                  type="range"
+                  min="0"
+                  max="7"
+                  step="1"
+                  value="1"
+                  onchange="onSliderChange('avgNumOfVisitsPerWeek')"
+                  class="slider"
+                  id="avgNumOfVisitsPerWeek"
+                />
+                <span id="avgNumOfVisitsPerWeek-value">1</span>
+              </div>
+              <div class="input-section">
+                <h4>Number of houses</h4>
+                <p class="slider-description">
+                  Number of homes in the simulation.
+                </p>
+                <input
+                  type="range"
+                  min="2"
+                  max="12"
+                  step="1"
+                  value="12"
+                  onchange="onSliderChange('numHomes')"
+                  class="slider"
+                  id="numHomes"
+                />
+                <span id="numHomes-value">12</span>
+              </div>
+            </div>
+            <div class="simulation-params-section">
+              <h2 class="heading simulation-params-heading">
+                Simulation Params
+              </h2>
+              <h4>Dynamic (different each time)</h4>
+              <ul>
+                <li>
+                  Population:
+                  <span class="simulation-param" id="population"></span>
+                </li>
+                <li>
+                  Rule breakers (travellers):
+                  <span class="simulation-param" id="travellers"></span>
+                </li>
+                <li>
+                  Initially sick:
+                  <span class="simulation-param" id="initiallySick"></span>
+                </li>
+                <li>
+                  Couples: <span class="simulation-param" id="couples"></span>
+                </li>
+              </ul>
+              <h4>Static (same each time)</h4>
+              <ul>
+                <li>Death rate: <span class="simulation-param">3%</span></li>
+                <li>
+                  Transmission rate between couples:
+                  <span class="simulation-param">90%</span>
+                </li>
+                <li>
+                  Transmission rate between room mates:
+                  <span class="simulation-param">10%</span>
+                </li>
+                <li>
+                  Incubation period:
+                  <span class="simulation-param">7 days</span>
+                </li>
+                <li>
+                  Recovery period: <span class="simulation-param">14 days</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="description-section">
+        <h2 class="heading">Romance during Covid</h2>
+        <section class="article-section">
+          <h3>What does this animation show?</h3>
+          <p>
+            COVID-19's spread is highly sensitive to
+            <code>fractionOfPeopleTravelling</code>. In the simulation, this
+            represents the percentage of people that are breaking "Shelter in
+            Place" in order to see a partner.
+          </p>
+          <h3>Breaking "Shelter in Place"</h3>
+          <p>
+            Not everybody lives in the same house as their sexual partner(s).
+            These people are incentivized to travel to other homes during the
+            isolation period.
+          </p>
+          <h3>Experiment idea</h3>
+          <p>
+            We're trying to avoid everyone getting COVID-19 at the same time
+            because that will overload our medical system, meaning people can't
+            get the right medical treatment which results in uneccessary deaths.
+          </p>
+          <p>
+            Keeping everything else constant, run the simulation 5 times with a
+            <code>fractionOfPeopleTravelling</code> of 1.00. A good trick is to
+            open 5 tabs in your browser, one for each experiment. Hovering your
+            cursor over the graph will show the counts at each day in the
+            simulation. At the peak of the
+            <b style="color: #fe6d78;">sick</b> graph, record the sick count and
+            the total population count. Take the average of all your attempts.
+          </p>
+          <p>
+            For example, when <code>fractionOfPeopleTravelling</code> is
+            <b>1.00</b>:
+          </p>
+          <p>
+            <code
+              >PEAK_INFECTIONS_MOMENT(TRAVELLING_RATE = 1.00)=
+              average(17/27,33/36,30/36,29/39,12/24,19/43,19/33) =
+              <b>66%</b></code
+            >
+          </p>
+          <p>When <code>fractionOfPeopleTravelling</code> is <b>0.10</b>:</p>
+          <p>
+            <code
+              >PEAK_INFECTIONS_MOMENT(TRAVELLING_RATE = 0.10) =
+              average(3/26,10/37,10/24,10/33,6/28,5/29,10/27) = <b>27%</b></code
+            >
+          </p>
+          <p>
+            Reducing the amount of people that are travelling to other homes
+            reduced the "peak infections" moment dramatically.
+          </p>
+          <h3>Conclusion</h3>
+          <p>
+            It's important to remember that these
+            <b style="color: #fe6d78;">red</b> and
+            <b style="color: #000;">black </b> dots represent suffering people.
+            They are mothers and fathers and sisters and husbands and wives and
+            friends. This simulation shows you can prevent them from harm.
+            Unless you live with your partner, put your love life on hold for a
+            month or so. It's a bummer, but it's a very decent thing to do :)
+          </p>
+        </section>
+      </div>
+    </main>
+    <script src="chart.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

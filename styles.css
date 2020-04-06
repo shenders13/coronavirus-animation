@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  padding: 32px 0;
+  color: #4a4a4a;
+  width: 100%;
+  background: linear-gradient(150deg, #53f 15%, #05d5ff 70%, #a6ffcb 94%);
+}
+@media only screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  .main-animation {
+    flex-direction: column;
+  }
+  code {
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+  }
+  .control-panel-and-params-section {
+    flex-direction: column;
+  }
+  .simulation-params-section {
+    margin-left: 0;
+  }
+  #chart-container {
+    margin-top: 12px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+  .right-side {
+    margin: 0 0 0 12px;
+  }
+  .simulation-params-section {
+    margin-left: 12px;
+  }
+}
+main {
+  display: flex;
+  max-width: 1664px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.main-animation {
+  display: flex;
+}
+.animation-and-counters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background: #f6f9fc;
+  border-radius: 0 0 8px 8px;
+}
+#chart-container {
+  flex: 1;
+  height: 300px;
+  width: 100%;
+}
+.canvasjs-chart-canvas {
+  border-radius: 8px;
+}
+.right-side {
+  flex: 1;
+}
+.control-panel-and-params-section {
+  width: 100%;
+  display: flex;
+}
+.control-panel {
+  background-color: #f6f9fc;
+  max-width: 500px;
+  min-height: 497px;
+  margin-top: 12px;
+  border-radius: 8px;
+  padding: 24px 24px 0 24px;
+  flex: 6;
+}
+.simulation-params-section {
+  background-color: #f6f9fc;
+  min-height: 497px;
+  margin-top: 12px;
+  border-radius: 8px;
+  padding: 24px 24px 0 24px;
+  flex: 4;
+}
+.heading {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.simulation-params-heading {
+  margin-bottom: 28px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  align-items: center;
+  border: solid 1px #cecece;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+.counter {
+  height: 100%;
+  border-right: solid 1px #cecece;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+.reset {
+  background: #6772e5;
+  display: none;
+}
+.start {
+  background: #3ecf8e;
+}
+.pause {
+  background: #fe6d78;
+}
+button {
+  cursor: pointer;
+}
+.toggle-animation-button {
+  color: white;
+  white-space: nowrap;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+#healthy {
+  background-color: #3ecf8e;
+  color: white;
+  border: none;
+  border-radius: 8px 0 0 0;
+}
+#sick {
+  background-color: #fe6d78;
+  color: white;
+}
+#recovered {
+  background-color: #00a0e1;
+  color: white;
+}
+#deceased {
+  background-color: black;
+  color: white;
+}
+#animation {
+  background: #f6f9fc;
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+}
+.time {
+  font-weight: bold;
+  font-size: 32px;
+  color: white;
+  border-right: none;
+  color: #4a4a4a;
+}
+circle {
+  transition-duration: 1s;
+}
+rect {
+  fill-opacity: 1;
+  fill: #f9f9f9;
+  stroke: #6772e5;
+}
+.canvasjs-chart-credit {
+  display: none;
+}
+.input-section {
+  padding: 16px 0;
+  border-bottom: solid 1px #dadada;
+}
+.slider-description {
+  color: #8e8e8e;
+  font-size: 12px;
+  margin: 0 0 12px;
+}
+.slider {
+  cursor: pointer;
+}
+h4 {
+  margin: 0 0 12px;
+}
+li {
+  list-style-type: none;
+  font-size: 14px;
+  padding: 0;
+  padding: 16px 0;
+  border-bottom: solid 1px #dadada;
+}
+ul {
+  padding-inline-start: 0;
+  color: #8e8e8e;
+}
+.simulation-param {
+  font-weight: bold;
+  color: #4a4a4a;
+}
+.article-section {
+  max-width: 1000px;
+}
+.description-section {
+  display: flex;
+  flex-direction: column;
+  background: #f6f9fc;
+  border-radius: 8px;
+  margin-top: 12px;
+  padding: 24px;
+}
+.description-section p {
+  font-size: 16px;
+  color: #3c4257;
+  line-height: 26px;
+}
