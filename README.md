@@ -1,3 +1,3 @@
 # DEMO
 
-See it live [file:///Users/samhenderson/Documents/apps/coronavirus-animation/index.html](here).
+See it live [https://coronavirus-simulation.s3-us-west-1.amazonaws.com/index.html](here).
